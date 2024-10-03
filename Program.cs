@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using WebApplication1.Data;
@@ -36,7 +37,9 @@ if (app.Environment.IsDevelopment())
 }
 
 
+
 app.MapControllers();
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.Run();

@@ -271,3 +271,4 @@ C:\Users\isip_\RiderProjects\coffe_shop_api\obj\Debug\net8.0\refint\WebApplicati
 C:\Users\isip_\RiderProjects\coffe_shop_api\obj\Debug\net8.0\WebApplication1.pdb
 C:\Users\isip_\RiderProjects\coffe_shop_api\obj\Debug\net8.0\WebApplication1.genruntimeconfig.cache
 C:\Users\isip_\RiderProjects\coffe_shop_api\obj\Debug\net8.0\ref\WebApplication1.dll
+C:\Users\isip_\RiderProjects\coffe_shop_api\bin\Debug\net8.0\WebApplication1.staticwebassets.runtime.json

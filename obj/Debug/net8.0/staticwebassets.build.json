@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "ozPU8KMwOlbQHpcE5qZTZ7CirEa+BWCC4ogaz+QJEsE=",
+  "Hash": "TazszI5Ya7qb/iTn3746U5rlYN7HTiMI++P2YI4xFdI=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApplication1\\wwwroot",
+      "Source": "WebApplication1",
+      "ContentRoot": "C:\\Users\\isip_\\RiderProjects\\coffe_shop_api\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\isip_\\RiderProjects\\coffe_shop_api\\wwwroot\\images\\3edb3dfa-a00a-4289-9716-d6a838e218a7_photo_2023-04-10_12-30-33.jpg",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\isip_\\RiderProjects\\coffe_shop_api\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "images/3edb3dfa-a00a-4289-9716-d6a838e218a7_photo_2023-04-10_12-30-33.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3edb3dfa-a00a-4289-9716-d6a838e218a7_photo_2023-04-10_12-30-33.jpg"
+    }
+  ]
 }
