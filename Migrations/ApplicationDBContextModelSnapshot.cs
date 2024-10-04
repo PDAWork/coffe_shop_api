@@ -22,6 +22,89 @@ namespace WebApplication1.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("WebApplication1.features.auth.model.RoleModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreateAt = new DateTime(2024, 10, 4, 16, 9, 26, 890, DateTimeKind.Utc).AddTicks(2303),
+                            Name = "ADMIN",
+                            UpdateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(3766)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(4319),
+                            Name = "USER",
+                            UpdateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(4321)
+                        });
+                });
+
+            modelBuilder.Entity("WebApplication1.features.auth.model.UserModel", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("RefreshToken")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SuccessToken")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("WebApplication1.model.CoffeModel", b =>
                 {
                     b.Property<long>("id")
@@ -78,24 +161,40 @@ namespace WebApplication1.Migrations
                         new
                         {
                             id = 1,
-                            createAt = new DateTime(2024, 10, 2, 9, 18, 31, 980, DateTimeKind.Utc).AddTicks(7050),
+                            createAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(4794),
                             name = "S",
-                            updateAt = new DateTime(2024, 10, 2, 9, 18, 31, 997, DateTimeKind.Utc).AddTicks(2620)
+                            updateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(4795)
                         },
                         new
                         {
                             id = 2,
-                            createAt = new DateTime(2024, 10, 2, 9, 18, 31, 997, DateTimeKind.Utc).AddTicks(3350),
+                            createAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(5079),
                             name = "M",
-                            updateAt = new DateTime(2024, 10, 2, 9, 18, 31, 997, DateTimeKind.Utc).AddTicks(3350)
+                            updateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(5080)
                         },
                         new
                         {
                             id = 3,
-                            createAt = new DateTime(2024, 10, 2, 9, 18, 31, 997, DateTimeKind.Utc).AddTicks(3350),
+                            createAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(5081),
                             name = "L",
-                            updateAt = new DateTime(2024, 10, 2, 9, 18, 31, 997, DateTimeKind.Utc).AddTicks(3350)
+                            updateAt = new DateTime(2024, 10, 4, 16, 9, 26, 891, DateTimeKind.Utc).AddTicks(5081)
                         });
+                });
+
+            modelBuilder.Entity("WebApplication1.features.auth.model.UserModel", b =>
+                {
+                    b.HasOne("WebApplication1.features.auth.model.RoleModel", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("WebApplication1.features.auth.model.RoleModel", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }
