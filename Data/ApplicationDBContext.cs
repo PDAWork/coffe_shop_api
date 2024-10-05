@@ -6,7 +6,7 @@ using WebApplication1.model;
 
 namespace WebApplication1.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbContextOptions) : IdentityDbContext<UserModel>(dbContextOptions)
+public class ApplicationDbContext(DbContextOptions dbContextOptions) : IdentityDbContext<UserModel,RoleModel,string>(dbContextOptions)
 {
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -19,19 +19,22 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbConte
             .HasForeignKey(u => u.RoleId);
 
 
-        List<RoleModel> listRole = new List<RoleModel>()
-        {
+        List<RoleModel> listRole =
+        [
             new RoleModel
             {
-                Id = 1,
+                Id = Guid.NewGuid().ToString(),
+                NormalizedName = "Admin",
                 Name = "ADMIN"
             },
+
             new RoleModel
             {
-                Id = 2,
+                Id = Guid.NewGuid().ToString(),
+                NormalizedName = "User",
                 Name = "USER"
             }
-        };
+        ];
 
         List<CoffeSizeModel> listCoffeSize = new List<CoffeSizeModel>()
         {
@@ -62,6 +65,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> dbConte
     public DbSet<CoffeSizeModel> CoffeSizes { get; set; }
     public DbSet<CoffeModel> Coffes { get; set; }
 
-    public DbSet<RoleModel> Roles { get; set; }
-    public DbSet<UserModel> Users { get; set; }
+    // public DbSet<RoleModel> Roles { get; set; }
+    // public DbSet<UserModel> Users { get; set; }
 }
