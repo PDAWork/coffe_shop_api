@@ -24,7 +24,7 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.WriteIndented = true; // Optional for pretty JSON
     });
 
-builder.Services.AddIdentity<UserModel, RoleModel>(options =>
+builder.Services.AddIdentity<UserModel,RoleModel>(options =>
 {
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;

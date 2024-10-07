@@ -11,13 +11,10 @@ namespace WebApplication1.features.auth.controller;
 public class AuthController(UserManager<UserModel> userManager, ApplicationDbContext context) : ControllerBase
 {
     private readonly UserManager<UserModel> _userManager = userManager;
-    private ApplicationDbContext Context = context;
-    
+   
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterEntity registerEntity)
     {
-        context.Roles.FindAsync();
-        context.Users.FindAsync();
         try
         {
             if (!ModelState.IsValid)
@@ -28,7 +25,7 @@ public class AuthController(UserManager<UserModel> userManager, ApplicationDbCon
             var user = new UserModel
             {
                 UserName = registerEntity.Name,
-                Login = registerEntity.Login,
+                Email = registerEntity.Login,
             };
 
             var createUser = await _userManager.CreateAsync(user, registerEntity.Password);
@@ -46,7 +43,7 @@ public class AuthController(UserManager<UserModel> userManager, ApplicationDbCon
         }
         catch (Exception e)
         {
-            return StatusCode(500, e);
+            return StatusCode(500, new { Message = e.Message, StackTrace = e.StackTrace });
         }
 
         return StatusCode(500);
