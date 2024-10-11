@@ -158,7 +158,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
         }
 
         // Генерация уникального имени для нового файла
-        var uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
+        var uniqueFileName = Guid.NewGuid() + "." + image.FileName.Split('.').Last();
         var filePath = Path.Combine(uploadsFolderPath, uniqueFileName);
 
         // Сохранение нового файла изображения на диск
