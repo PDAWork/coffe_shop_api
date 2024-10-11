@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
@@ -12,12 +13,14 @@ namespace WebApplication1.features.coffe_size.Controller;
 public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
 {
     [HttpGet("index")]
+    [Authorize(Roles = "User")]
     public IActionResult index()
     {
         return Ok("CoffeSizeController");
     }
 
     [HttpGet]
+    [Authorize(Roles = "ADMIN")]
     public IActionResult GetAllCoffeSize()
     {
         var result = context.CoffeSizes.Select(s => s.ToCoffeSizeDto()).ToList();
@@ -46,7 +49,7 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        
+
 
         var model = request.ToCoffeSizeFromCreateDTO();
         await context.CoffeSizes.AddAsync(model);

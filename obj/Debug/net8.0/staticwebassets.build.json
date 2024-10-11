@@ -1,19 +1,11 @@
 {
   "Version": 1,
-  "Hash": "JZ9rWNB7GorGf6tOmkpu1167rWVyXc8Z0h6e7DO64fE=",
+  "Hash": "ozPU8KMwOlbQHpcE5qZTZ7CirEa+BWCC4ogaz+QJEsE=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [
-    {
-      "Name": "WebApplication1\\wwwroot",
-      "Source": "WebApplication1",
-      "ContentRoot": "C:\\Users\\isip_\\RiderProjects\\coffe_shop_api\\wwwroot\\",
-      "BasePath": "_content/WebApplication1",
-      "Pattern": "**"
-    }
-  ],
+  "DiscoveryPatterns": [],
   "Assets": []
 }

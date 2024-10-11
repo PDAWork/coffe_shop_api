@@ -13,30 +13,21 @@ public class ApplicationDbContext(DbContextOptions dbContextOptions)
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
-      
         
-        // Create Relation OneToMany User -> Role
-        // builder.Entity<UserModel>()
-        //     .HasOne(u => u.Role) // Один пользователь имеет одну роль
-        //     .WithMany(r => r.Users) // У одной роли много пользователей
-        //     .HasForeignKey(u => u.RoleId);
-
-
         List<RoleModel> listRole =
         [
             new RoleModel
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = "ADMIN",
-                NormalizedName = "Admin"
+                Name = "Admin",
+                NormalizedName = "ADMIN"
             },
 
             new RoleModel
             {
                 Id = Guid.NewGuid().ToString(),
-                Name = "USER",
-                NormalizedName = "User"
+                Name = "User",
+                NormalizedName = "USER"
             }
         ];
 
@@ -64,6 +55,13 @@ public class ApplicationDbContext(DbContextOptions dbContextOptions)
         builder.Entity<CoffeSizeModel>().HasData(
             listCoffeSize
         );
+        
+        // Настройка связи один ко многим между UserModel и RefreshTokenModel
+        builder.Entity<UserModel>()
+            .HasMany(u => u.AccessTokens)
+            .WithOne(rt => rt.User)
+            .HasForeignKey(rt => rt.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 
     public DbSet<CoffeSizeModel> CoffeSizes { get; set; }
@@ -71,4 +69,5 @@ public class ApplicationDbContext(DbContextOptions dbContextOptions)
 
     public DbSet<RoleModel> Roles { get; set; }
     public DbSet<UserModel> Users { get; set; }
+    public DbSet<AccessTokenModel> AccessTokens { get; set; }
 }
