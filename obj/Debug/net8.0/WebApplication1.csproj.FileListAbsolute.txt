@@ -299,3 +299,4 @@ C:/Users/isip_/RiderProjects/coffe_shop_api/bin/Debug/net8.0/System.IdentityMode
 /Users/pda/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/pda/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/pda/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net8.0/WebApplication1.sourcelink.json
+/Users/pda/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net8.0/WebApplication1.staticwebassets.runtime.json

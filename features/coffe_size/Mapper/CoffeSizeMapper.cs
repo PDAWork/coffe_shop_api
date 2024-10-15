@@ -5,24 +5,25 @@ namespace WebApplication1.features.coffe_size.Mapper;
 
 public static class CoffeSizeMapper
 {
-    public static CoffeSizeModel ToCoffeSizeFromCreateDTO(this CoffeSizeCreateEntity coffeSize)
+    public static CoffeeSizeModel ToCoffeSizeFromCreateDTO(this CoffeSizeCreateEntity coffeeSize)
     {
-        return new CoffeSizeModel()
+        return new CoffeeSizeModel()
         {
-            name = coffeSize.name,
-            createAt = coffeSize.createAt,
-            updateAt = coffeSize.updateAt
+            Name = coffeeSize.name,
+            Percent = coffeeSize.Percent,
+            CreateAt = coffeeSize.createAt,
+            UpdateAt = coffeeSize.updateAt
         };
     }
 
-    public static CoffeSizeEntity ToCoffeSizeDto(this CoffeSizeModel coffeSize)
+    public static CoffeeSizeEntity ToCoffeSizeDto(this CoffeeSizeModel coffeeSize)
     {
-        return new CoffeSizeEntity
+        return new CoffeeSizeEntity
         {
-            id = coffeSize.id,
-            name = coffeSize.name,
-            createAt = coffeSize.createAt,
-            updateAt = coffeSize.updateAt,
+            Id = coffeeSize.Id,
+            Name = coffeeSize.Name,
+            CreateAt = coffeeSize.CreateAt,
+            UpdateAt = coffeeSize.UpdateAt,
         };
     }
 }

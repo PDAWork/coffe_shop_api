@@ -20,7 +20,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
     [HttpGet]
     public IActionResult GetAllCoffeeSize()
     {
-        List<CoffeEntity> entity = context.Coffes.Select(s => s.ToCoffeEntity(HttpContext)).ToList();
+        List<CoffeeEntity> entity = context.Coffes.Select(s => s.ToCoffeEntity(HttpContext)).ToList();
         return Ok(entity);
     }
 
@@ -66,7 +66,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
         await context.SaveChangesAsync();
 
         // Возврат успешного ответа с информацией о созданном объекте
-        return CreatedAtAction(nameof(GetCoffeeById), new { id = model.id }, model.ToCoffeEntity(HttpContext));
+        return CreatedAtAction(nameof(GetCoffeeById), new { id = model.Id }, model.ToCoffeEntity(HttpContext));
     }
 
 
@@ -84,13 +84,13 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
         }
 
         // Обновление данных кофе на основе переданного запроса
-        coffee.name = request.name;
-        coffee.price = request.price;
+        coffee.Name = request.name;
+        coffee.Price = request.price;
 
         // Если есть новое изображение, обновляем его
         if (image.Length > 0)
         {
-            if (!DeleteFile(coffee.path))
+            if (!DeleteFile(coffee.Path))
             {
                 return BadRequest("Ошибка удаления файла");
             }
@@ -98,14 +98,14 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
             var stateCreate = await CreateFile(image);
             if (!stateCreate.isCheck)
             {
-                if (!DeleteFile(coffee.path))
+                if (!DeleteFile(coffee.Path))
                 {
                     return BadRequest("Ошибка создания файла");
                 }
             }
 
             // Обновляем путь к изображению в сущности
-            coffee.path = stateCreate.path;
+            coffee.Path = stateCreate.path;
         }
 
         // Сохранение изменений в базе данных
@@ -128,7 +128,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
             return NotFound("Кофе с указанным ID не найден.");
         }
 
-        if (!DeleteFile(coffee.path))
+        if (!DeleteFile(coffee.Path))
         {
             return BadRequest("Ошибка удаления файла");
         }
@@ -137,7 +137,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
         context.Coffes.Remove(coffee);
         await context.SaveChangesAsync();
 
-        return Ok($"Кофе с ID {id} и файл {coffee.path} успешно удалены.");
+        return Ok($"Кофе с ID {id} и файл {coffee.Path} успешно удалены.");
     }
 
     /// <summary>

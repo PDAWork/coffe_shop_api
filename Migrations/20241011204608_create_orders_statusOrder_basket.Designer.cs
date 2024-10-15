@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApplication1.Data;
@@ -11,9 +12,11 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241011204608_create_orders_statusOrder_basket")]
+    partial class create_orders_statusOrder_basket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,19 +194,19 @@ namespace WebApplication1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "906a25e4-1a54-4cb9-b9f8-32bf6f2d4e60",
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 593, DateTimeKind.Utc).AddTicks(4470),
+                            Id = "b0f85118-5609-425b-8a0f-9419ae1b40c0",
+                            CreateAt = new DateTime(2024, 10, 11, 23, 46, 8, 35, DateTimeKind.Utc).AddTicks(5210),
                             Name = "Admin",
                             NormalizedName = "ADMIN",
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(4180)
+                            UpdateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(2390)
                         },
                         new
                         {
-                            Id = "6633638a-a451-49a4-8d3a-4a1fcf4778ea",
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(8120),
+                            Id = "a6c06766-3692-43fe-857f-37f7c5fb66cd",
+                            CreateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(6320),
                             Name = "User",
                             NormalizedName = "USER",
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(8120)
+                            UpdateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(6320)
                         });
                 });
 
@@ -363,177 +366,81 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StatusOrders");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2150),
-                            Name = "Pending",
-                            UpdatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2150)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2650),
-                            Name = "Confirmed",
-                            UpdatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2660)
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.model.CoffeeModel", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("id"));
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("createAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Path")
+                    b.Property<string>("path")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<float>("Price")
+                    b.Property<float>("price")
                         .HasColumnType("real");
 
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime>("updateAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Coffes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(760),
-                            Name = "Американо",
-                            Path = "85539d89-23ab-41bc-9267-0f86e35957f4.svg",
-                            Price = 275f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(760)
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470),
-                            Name = "Латте",
-                            Path = "5d5dc247-eba6-44d4-a87d-24475f7f40bf.svg",
-                            Price = 330f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470)
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470),
-                            Name = "Эспрессо",
-                            Path = "635a7237-552b-459c-a304-6c32e6ba29fa.svg",
-                            Price = 150f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470)
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480),
-                            Name = "Макиато",
-                            Path = "5779c99f-1228-42e7-ad32-b447d3f750a2.svg",
-                            Price = 365f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480)
-                        },
-                        new
-                        {
-                            Id = 5L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480),
-                            Name = "Лунго",
-                            Path = "e80b89f0-09c2-4f31-85e7-c1ab61cb4cab.svg",
-                            Price = 350f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480)
-                        },
-                        new
-                        {
-                            Id = 6L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
-                            Name = "Корретто",
-                            Path = "9760acfa-75a3-4b2a-b599-c6dc811c939c.svg",
-                            Price = 365f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
-                        },
-                        new
-                        {
-                            Id = 7L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
-                            Name = "Эспрессо Романо",
-                            Path = "e0f2d3d9-17fc-4c90-bf76-49fa22d059e2.svg",
-                            Price = 200f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
-                        },
-                        new
-                        {
-                            Id = 8L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
-                            Name = "Галан",
-                            Path = "b3355c87-de26-4c93-9673-dd725ea7757c.svg",
-                            Price = 330f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.model.CoffeeSizeModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<DateTime>("CreateAt")
+                    b.Property<DateTime>("createAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<short>("Percent")
-                        .HasColumnType("smallint");
-
-                    b.Property<DateTime>("UpdateAt")
+                    b.Property<DateTime>("updateAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("CoffeSizes");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(9390),
-                            Name = "S",
-                            Percent = (short)0,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(9390)
+                            id = 1,
+                            createAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7470),
+                            name = "S",
+                            updateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7470)
                         },
                         new
                         {
-                            Id = 2,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(100),
-                            Name = "M",
-                            Percent = (short)20,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110)
+                            id = 2,
+                            createAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7980),
+                            name = "M",
+                            updateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7980)
                         },
                         new
                         {
-                            Id = 3,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110),
-                            Name = "L",
-                            Percent = (short)30,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110)
+                            id = 3,
+                            createAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7980),
+                            name = "L",
+                            updateAt = new DateTime(2024, 10, 11, 23, 46, 8, 52, DateTimeKind.Utc).AddTicks(7990)
                         });
                 });
 
@@ -601,7 +508,7 @@ namespace WebApplication1.Migrations
 
             modelBuilder.Entity("WebApplication1.features.basket.model.BasketModel", b =>
                 {
-                    b.HasOne("WebApplication1.model.CoffeeModel", "Coffee")
+                    b.HasOne("WebApplication1.model.CoffeeModel", "coffee")
                         .WithMany("Baskets")
                         .HasForeignKey("CoffeeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -619,11 +526,11 @@ namespace WebApplication1.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Coffee");
-
                     b.Navigation("CoffeeSize");
 
                     b.Navigation("Order");
+
+                    b.Navigation("coffee");
                 });
 
             modelBuilder.Entity("WebApplication1.features.basket.model.OrderModel", b =>

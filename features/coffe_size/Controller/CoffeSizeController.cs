@@ -54,7 +54,7 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
         var model = request.ToCoffeSizeFromCreateDTO();
         await context.CoffeSizes.AddAsync(model);
         await context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetCoffeSizeById), new { id = model.id }, model.ToCoffeSizeDto());
+        return CreatedAtAction(nameof(GetCoffeSizeById), new { id = model.Id }, model.ToCoffeSizeDto());
     }
 
     [HttpPut]
@@ -66,15 +66,15 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var model = await context.CoffeSizes.FirstOrDefaultAsync(element => element.id == id);
+        var model = await context.CoffeSizes.FirstOrDefaultAsync(element => element.Id == id);
 
         if (model == null)
         {
             return NotFound();
         }
 
-        model.name = request.name;
-        model.updateAt = request.updateAt;
+        model.Name = request.name;
+        model.UpdateAt = request.updateAt;
 
         await context.SaveChangesAsync();
 
@@ -85,7 +85,7 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
     [Route("{id:int}")]
     public async Task<IActionResult> DeleteCoffeSize([FromRoute] int id)
     {
-        var result = await context.CoffeSizes.FirstOrDefaultAsync(element => element.id == id);
+        var result = await context.CoffeSizes.FirstOrDefaultAsync(element => element.Id == id);
         if (result == null)
             return NotFound();
 

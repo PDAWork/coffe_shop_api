@@ -5,26 +5,26 @@ namespace WebApplication1.features.coffe.Mapper;
 
 public static class CoffeMapper
 {
-    public static CoffeEntity ToCoffeEntity(this CoffeModel model,HttpContext httpContext)
+    public static CoffeeEntity ToCoffeEntity(this CoffeeModel model,HttpContext httpContext)
     {
-        return new CoffeEntity
+        return new CoffeeEntity
         {
-            id = model.id,
-            name = model.name,
-            path =$"{httpContext.Request.Scheme}://{httpContext.Request.Host}/images/{model.path}",
-            price =model.price ,
-            createAt = model.createAt,
-            updateAt = model.updateAt
+            Id = model.Id,
+            Name = model.Name,
+            Path =$"{httpContext.Request.Scheme}://{httpContext.Request.Host}/images/{model.Path}",
+            Price =model.Price ,
+            CreateAt = model.CreateAt,
+            UpdateAt = model.UpdateAt
         };
     }
 
-    public static CoffeModel ToCoffeFromCreateEntity(this CoffeCreateEntity entity ,String pathImage)
+    public static CoffeeModel ToCoffeFromCreateEntity(this CoffeCreateEntity entity ,String pathImage)
     {
-        return new CoffeModel
+        return new CoffeeModel
         {
-            name = entity.name,
-            price = entity.price,
-            path = pathImage,
+            Name = entity.name,
+            Price = entity.price,
+            Path = pathImage,
         };
     }
 }

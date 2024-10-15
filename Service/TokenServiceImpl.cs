@@ -22,6 +22,7 @@ public class TokenServiceImpl : ITokenService
     {
         var claims = new List<Claim>
         {
+            new Claim(JwtRegisteredClaimNames.Sid, user.Id),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.GivenName, user.UserName),
         };

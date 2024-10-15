@@ -2,4 +2,4 @@
 
 namespace WebApplication1.features.coffe.entity;
 
-public sealed class CoffeEntity : CoffeModel;
+public sealed class CoffeeEntity : CoffeeModel;
