@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest  # Образ PostgreSQL
+    environment:
+      POSTGRES_USER: root  # Имя пользователя PostgreSQL
+      POSTGRES_PASSWORD: root  # Пароль пользователя PostgreSQL
+      POSTGRES_DB: coffeShop  # Имя базы данных, которая будет создана при старте контейнера
+    ports:
+      - "5432:5432"  # Пробрасываем порт для подключения к базе данных
+    volumes:
+      - db-data:/var/lib/postgresql/data  # Для сохранения данных между перезапусками контейнера
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Пробрасываем порт для доступа к приложению
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development  # Устанавливаем окружение
+    depends_on:
+      - db  # Указываем, что контейнер веб-приложения зависит от контейнера базы данных
+
+volumes:
+  db-data:
