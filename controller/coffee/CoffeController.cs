@@ -41,7 +41,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateCoffeeSize([FromForm] CoffeCreateEntity request, [Required] IFormFile image)
+    public async Task<IActionResult> CreateCoffeeSize([FromForm] CoffeeCreateEntity request, [Required] IFormFile image)
     {
         if (image.Length == 0)
         {
@@ -71,7 +71,7 @@ public class CoffeeController(ApplicationDbContext context) : ControllerBase
 
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateCoffeeSize([FromRoute] long id, [FromForm] CoffeCreateEntity request,
+    public async Task<IActionResult> UpdateCoffeeSize([FromRoute] long id, [FromForm] CoffeeCreateEntity request,
         [Required] IFormFile image)
     {
         if (!ModelState.IsValid)

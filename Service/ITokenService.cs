@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using WebApplication1.features.auth.model;
 
 namespace WebApplication1.Service;

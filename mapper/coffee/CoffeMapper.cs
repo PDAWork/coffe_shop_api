@@ -18,7 +18,7 @@ public static class CoffeMapper
         };
     }
 
-    public static CoffeeModel ToCoffeFromCreateEntity(this CoffeCreateEntity entity ,String pathImage)
+    public static CoffeeModel ToCoffeFromCreateEntity(this CoffeeCreateEntity entity ,String pathImage)
     {
         return new CoffeeModel
         {

@@ -1,6 +1,6 @@
 namespace WebApplication1.features.coffe_size.entity;
 
-public class CoffeSizeUpdateEntity
+public class CoffeeSizeUpdateEntity
 {
     public string name { get; set; } = String.Empty;
     public short Percent { get; set; }

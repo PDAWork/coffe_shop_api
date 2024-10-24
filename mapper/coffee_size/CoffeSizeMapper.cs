@@ -5,7 +5,7 @@ namespace WebApplication1.features.coffe_size.Mapper;
 
 public static class CoffeSizeMapper
 {
-    public static CoffeeSizeModel ToCoffeSizeFromCreateDTO(this CoffeSizeCreateEntity coffeeSize)
+    public static CoffeeSizeModel ToCoffeSizeFromCreateDTO(this CoffeeSizeCreateEntity coffeeSize)
     {
         return new CoffeeSizeModel()
         {

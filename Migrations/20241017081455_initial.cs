@@ -61,32 +61,48 @@ namespace WebApplication1.Migrations
                 name: "Coffes",
                 columns: table => new
                 {
-                    id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    price = table.Column<float>(type: "real", nullable: false),
-                    path = table.Column<string>(type: "text", nullable: false),
-                    createAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<float>(type: "real", nullable: false),
+                    Path = table.Column<string>(type: "text", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coffes", x => x.id);
+                    table.PrimaryKey("PK_Coffes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CoffeSizes",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    name = table.Column<string>(type: "text", nullable: false),
-                    createAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Percent = table.Column<short>(type: "smallint", nullable: false),
+                    CreateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CoffeSizes", x => x.id);
+                    table.PrimaryKey("PK_CoffeSizes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StatusOrders",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StatusOrders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -217,23 +233,110 @@ namespace WebApplication1.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    StatusOrderId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Orders_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Orders_StatusOrders_StatusOrderId",
+                        column: x => x.StatusOrderId,
+                        principalTable: "StatusOrders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Baskets",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    CountSugar = table.Column<short>(type: "smallint", nullable: false),
+                    Quantity = table.Column<short>(type: "smallint", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    OrderId = table.Column<string>(type: "text", nullable: false),
+                    CoffeeSizeId = table.Column<int>(type: "integer", nullable: false),
+                    CoffeeId = table.Column<long>(type: "bigint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Baskets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Baskets_CoffeSizes_CoffeeSizeId",
+                        column: x => x.CoffeeSizeId,
+                        principalTable: "CoffeSizes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Baskets_Coffes_CoffeeId",
+                        column: x => x.CoffeeId,
+                        principalTable: "Coffes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Baskets_Orders_OrderId",
+                        column: x => x.OrderId,
+                        principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "CreateAt", "Name", "NormalizedName", "UpdateAt" },
                 values: new object[,]
                 {
-                    { "4d0edbcd-1419-4a0b-aaad-54d1acc8bef3", null, new DateTime(2024, 10, 10, 14, 13, 41, 192, DateTimeKind.Utc).AddTicks(2040), "Admin", "ADMIN", new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(570) },
-                    { "99c7e5d1-2707-4f3f-a634-0af7800ca7fc", null, new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(3690), "User", "USER", new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(3690) }
+                    { "9a763126-6fd0-4bda-aa78-a7aa3359dfaa", null, new DateTime(2024, 10, 17, 11, 14, 55, 549, DateTimeKind.Utc).AddTicks(7150), "Admin", "ADMIN", new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(6530) },
+                    { "b1a70fc1-8865-4c42-a1f0-dd08d382b8b6", null, new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(9560), "User", "USER", new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(9560) }
                 });
 
             migrationBuilder.InsertData(
                 table: "CoffeSizes",
-                columns: new[] { "id", "createAt", "name", "updateAt" },
+                columns: new[] { "Id", "CreateAt", "Name", "Percent", "UpdateAt" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4350), "S", new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4350) },
-                    { 2, new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4740), "M", new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4750) },
-                    { 3, new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4750), "L", new DateTime(2024, 10, 10, 14, 13, 41, 205, DateTimeKind.Utc).AddTicks(4750) }
+                    { 1, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(590), "S", (short)0, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(590) },
+                    { 2, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1130), "M", (short)20, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1130) },
+                    { 3, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1140), "L", (short)30, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1140) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Coffes",
+                columns: new[] { "Id", "CreateAt", "Name", "Path", "Price", "UpdateAt" },
+                values: new object[,]
+                {
+                    { 1L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1630), "Американо", "85539d89-23ab-41bc-9267-0f86e35957f4.svg", 275f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1630) },
+                    { 2L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160), "Латте", "5d5dc247-eba6-44d4-a87d-24475f7f40bf.svg", 330f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160) },
+                    { 3L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160), "Эспрессо", "635a7237-552b-459c-a304-6c32e6ba29fa.svg", 150f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170) },
+                    { 4L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170), "Макиато", "5779c99f-1228-42e7-ad32-b447d3f750a2.svg", 365f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170) },
+                    { 5L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170), "Лунго", "e80b89f0-09c2-4f31-85e7-c1ab61cb4cab.svg", 350f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170) },
+                    { 6L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180), "Корретто", "9760acfa-75a3-4b2a-b599-c6dc811c939c.svg", 365f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180) },
+                    { 7L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180), "Эспрессо Романо", "e0f2d3d9-17fc-4c90-bf76-49fa22d059e2.svg", 200f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180) },
+                    { 8L, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180), "Галан", "b3355c87-de26-4c93-9673-dd725ea7757c.svg", 330f, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "StatusOrders",
+                columns: new[] { "Id", "CreatedAt", "Name", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2680), "Pending", new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2680) },
+                    { 2, new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(3050), "Confirmed", new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(3050) }
                 });
 
             migrationBuilder.CreateIndex(
@@ -277,6 +380,31 @@ namespace WebApplication1.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Baskets_CoffeeId",
+                table: "Baskets",
+                column: "CoffeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Baskets_CoffeeSizeId",
+                table: "Baskets",
+                column: "CoffeeSizeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Baskets_OrderId",
+                table: "Baskets",
+                column: "OrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_StatusOrderId",
+                table: "Orders",
+                column: "StatusOrderId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -301,16 +429,25 @@ namespace WebApplication1.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Coffes");
-
-            migrationBuilder.DropTable(
-                name: "CoffeSizes");
+                name: "Baskets");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "CoffeSizes");
+
+            migrationBuilder.DropTable(
+                name: "Coffes");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "StatusOrders");
         }
     }
 }

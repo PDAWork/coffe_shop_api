@@ -191,19 +191,19 @@ namespace WebApplication1.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "906a25e4-1a54-4cb9-b9f8-32bf6f2d4e60",
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 593, DateTimeKind.Utc).AddTicks(4470),
+                            Id = "9a763126-6fd0-4bda-aa78-a7aa3359dfaa",
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 549, DateTimeKind.Utc).AddTicks(7150),
                             Name = "Admin",
                             NormalizedName = "ADMIN",
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(4180)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(6530)
                         },
                         new
                         {
-                            Id = "6633638a-a451-49a4-8d3a-4a1fcf4778ea",
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(8120),
+                            Id = "b1a70fc1-8865-4c42-a1f0-dd08d382b8b6",
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(9560),
                             Name = "User",
                             NormalizedName = "USER",
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(8120)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 562, DateTimeKind.Utc).AddTicks(9560)
                         });
                 });
 
@@ -368,16 +368,16 @@ namespace WebApplication1.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2150),
+                            CreatedAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2680),
                             Name = "Pending",
-                            UpdatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2150)
+                            UpdatedAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2680)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2650),
+                            CreatedAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(3050),
                             Name = "Confirmed",
-                            UpdatedAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(2660)
+                            UpdatedAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(3050)
                         });
                 });
 
@@ -414,74 +414,74 @@ namespace WebApplication1.Migrations
                         new
                         {
                             Id = 1L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(760),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1630),
                             Name = "Американо",
                             Path = "85539d89-23ab-41bc-9267-0f86e35957f4.svg",
                             Price = 275f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(760)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1630)
                         },
                         new
                         {
                             Id = 2L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160),
                             Name = "Латте",
                             Path = "5d5dc247-eba6-44d4-a87d-24475f7f40bf.svg",
                             Price = 330f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160)
                         },
                         new
                         {
                             Id = 3L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2160),
                             Name = "Эспрессо",
                             Path = "635a7237-552b-459c-a304-6c32e6ba29fa.svg",
                             Price = 150f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1470)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170)
                         },
                         new
                         {
                             Id = 4L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170),
                             Name = "Макиато",
                             Path = "5779c99f-1228-42e7-ad32-b447d3f750a2.svg",
                             Price = 365f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170)
                         },
                         new
                         {
                             Id = 5L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170),
                             Name = "Лунго",
                             Path = "e80b89f0-09c2-4f31-85e7-c1ab61cb4cab.svg",
                             Price = 350f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1480)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2170)
                         },
                         new
                         {
                             Id = 6L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180),
                             Name = "Корретто",
                             Path = "9760acfa-75a3-4b2a-b599-c6dc811c939c.svg",
                             Price = 365f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180)
                         },
                         new
                         {
                             Id = 7L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180),
                             Name = "Эспрессо Романо",
                             Path = "e0f2d3d9-17fc-4c90-bf76-49fa22d059e2.svg",
                             Price = 200f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180)
                         },
                         new
                         {
                             Id = 8L,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180),
                             Name = "Галан",
                             Path = "b3355c87-de26-4c93-9673-dd725ea7757c.svg",
                             Price = 330f,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(1490)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(2180)
                         });
                 });
 
@@ -514,26 +514,26 @@ namespace WebApplication1.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(9390),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(590),
                             Name = "S",
                             Percent = (short)0,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 610, DateTimeKind.Utc).AddTicks(9390)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(590)
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(100),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1130),
                             Name = "M",
                             Percent = (short)20,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1130)
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110),
+                            CreateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1140),
                             Name = "L",
                             Percent = (short)30,
-                            UpdateAt = new DateTime(2024, 10, 15, 8, 39, 47, 611, DateTimeKind.Utc).AddTicks(110)
+                            UpdateAt = new DateTime(2024, 10, 17, 11, 14, 55, 563, DateTimeKind.Utc).AddTicks(1140)
                         });
                 });
 

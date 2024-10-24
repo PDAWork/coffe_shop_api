@@ -2,7 +2,7 @@ using WebApplication1.model;
 
 namespace WebApplication1.features.coffe_size.entity;
 
-public class CoffeSizeCreateEntity
+public class CoffeeSizeCreateEntity
 {
     public String name { get; set; } = String.Empty;
     public short Percent { get; set; }

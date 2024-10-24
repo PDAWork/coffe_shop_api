@@ -67,11 +67,14 @@ builder.Services.AddIdentity<UserModel, RoleModel>(options =>
     }).AddRoles<RoleModel>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
-    options.UseNpgsql("Host=localhost;Port=5432;Database=coffeShop;Username=root;Password=root");
+
+    var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development"
+        ? builder.Configuration.GetConnectionString("Development")
+        : builder.Configuration.GetConnectionString("Production");
+    options.UseNpgsql("Host=db;Port=5432;Database=coffeShop;Username=root;Password=root");
 });
 
 

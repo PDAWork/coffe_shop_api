@@ -43,7 +43,7 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateCoffeSize([FromBody] CoffeSizeCreateEntity request)
+    public async Task<IActionResult> CreateCoffeSize([FromBody] CoffeeSizeCreateEntity request)
     {
         if (!ModelState.IsValid)
         {
@@ -59,7 +59,7 @@ public class CoffeSizeController(ApplicationDbContext context) : ControllerBase
 
     [HttpPut]
     [Route("{id:int}")]
-    public async Task<IActionResult> UpdateCoffeSize([FromRoute] int id, [FromBody] CoffeSizeUpdateEntity request)
+    public async Task<IActionResult> UpdateCoffeSize([FromRoute] int id, [FromBody] CoffeeSizeUpdateEntity request)
     {
         if (!ModelState.IsValid)
         {
